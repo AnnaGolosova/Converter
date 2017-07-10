@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using UserClass;
 using System.Threading;
+using Excel = Microsoft.Office.Interop.Excel;
 
 
 namespace Converter
@@ -17,7 +16,7 @@ namespace Converter
     public partial class Form1 : Form
     {
         private CSVReader reader;
-        private Thread openFileThread;
+        private Thread workThread;
         public Form1()
         {
             InitializeComponent();
@@ -57,6 +56,20 @@ namespace Converter
         {
             ActiveForm.Text = "Экспорт в XML";
             Tabs.SelectedTab = Tabs.TabPages["XMLPage"];
+
+            /*
+            DataTable table = new DataTable();
+            UserContext context = new UserContext();
+            List<User> list = context.Users.ToList();
+            Excel.Application excelApp = new Excel.Application();
+            excelApp.Workbooks.Add();
+            Excel.Worksheet activeSheet = excelApp.ActiveSheet;
+
+            activeSheet.Cells[1, 1] = "Hello!";
+
+            activeSheet.SaveAs("File.xls");
+            excelApp.Quit();
+            */
         }
 
         private void ViewButton_Click(object sender, EventArgs e)
@@ -70,29 +83,23 @@ namespace Converter
         private void LoadButton_Click(object sender, EventArgs e)
         {
             OpeningBar.Value = 0;
-            try
+            reader = new CSVReader(this, FileNameBox.Text, AddToExictingRadio.Checked ? 1 : 2);
+            workThread = new Thread(reader.ReadingFromFile)
             {
-                reader = new CSVReader(this, FileNameBox.Text);
-                openFileThread = new Thread(reader.ReadingFromFile);
-                openFileThread.IsBackground = true;
-                //openFileThread.SetApartmentState(ApartmentState.STA);
-                openFileThread.Start();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("выамы");
-            }
+                IsBackground = true
+            };
+            workThread.Start();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
-            if (openFileThread != null && openFileThread.IsAlive)
+            if (workThread != null && workThread.IsAlive)
             {
                 if (MessageBox.Show("Внимание! Идет загрузка файла. Вы уверены, что хотите прервать загрузку?", 
                                     "Завершение загрузки файла", MessageBoxButtons.YesNo, MessageBoxIcon.Question, 
                                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    openFileThread.Abort();
+                    workThread.Abort();
                 }
             }
             Application.Exit();
@@ -102,14 +109,41 @@ namespace Converter
         {
             WaitLabel.Visible = false;
             OpeningBar.Visible = false;
-            openFileThread.Abort();
+            workThread.Abort();
         }
 
         private void ShowRecordsButton_Click(object sender, EventArgs e)
         {
             ActiveForm.Text = "Просмотр содержимого базы данных";
             Tabs.SelectedTab = Tabs.TabPages["DBPage"];
-            
+            UserContext context = new UserContext();
+            var records =
+                (from p in context.Users
+                 select p
+                );
+            dataGridView1.DataSource = records.ToList();
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridView1.Columns[0].HeaderText = "ID";
+            dataGridView1.Columns[1].HeaderText = "Дата";
+            dataGridView1.Columns[2].HeaderText = "Имя";
+            dataGridView1.Columns[3].HeaderText = "Фамилия";
+            dataGridView1.Columns[4].HeaderText = "Отчество";
+            dataGridView1.Columns[5].HeaderText = "Город";
+            dataGridView1.Columns[6].HeaderText = "Страна";
+        }
+
+        private void XMLSaveButton_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                WaitLabel.Visible = true;
+                WaitLabel.Text = "Сохранение XML файла ...";
+                    XMLWriter writer = new XMLWriter(saveFileDialog1.FileName);
+                Thread xmlThread = new Thread(writer.WriteXML);
+                xmlThread.Start();
+                WaitLabel.Text = "XML файл успешно сохранен!";
+            }
         }
     }
 }

@@ -1,0 +1,82 @@
+<TestProgram>
+  <Record id="1">
+    <Date>07.07.2017 14:02:33</Date>
+    <FirstName>Илья</FirstName>
+    <LastName>Прокопенко</LastName>
+    <SurName>Денисович(-вна)</SurName>
+    <City>Питерберг</City>
+    <Country>Россия</Country>
+  </Record>
+  <Record id="2">
+    <Date>07.07.2017 14:02:33</Date>
+    <FirstName>Анна</FirstName>
+    <LastName>Астапенко</LastName>
+    <SurName>Андреевич(-вна)</SurName>
+    <City>Москва</City>
+    <Country>Россия</Country>
+  </Record>
+  <Record id="3">
+    <Date>07.07.2017 14:02:33</Date>
+    <FirstName>Игорь</FirstName>
+    <LastName>Сидоренко</LastName>
+    <SurName>Евгеньевич(-вна)</SurName>
+    <City>Речица</City>
+    <Country>Беларусь</Country>
+  </Record>
+  <Record id="4">
+    <Date>07.07.2017 14:02:34</Date>
+    <FirstName>Федор</FirstName>
+    <LastName>Прохоренко</LastName>
+    <SurName>Максимович(-вна)</SurName>
+    <City>Минск</City>
+    <Country>Беларусь</Country>
+  </Record>
+  <Record id="5">
+    <Date>07.07.2017 14:02:34</Date>
+    <FirstName>Антон</FirstName>
+    <LastName>Прохоренко</LastName>
+    <SurName>Петрович(-вна)</SurName>
+    <City>Москва</City>
+    <Country>Россия</Country>
+  </Record>
+  <Record id="6">
+    <Date>07.07.2017 14:02:34</Date>
+    <FirstName>Игорь</FirstName>
+    <LastName>Прокопенко</LastName>
+    <SurName>Петрович(-вна)</SurName>
+    <City>Минск</City>
+    <Country>Беларусь</Country>
+  </Record>
+  <Record id="7">
+    <Date>07.07.2017 14:02:34</Date>
+    <FirstName>Антон</FirstName>
+    <LastName>Сидоренко</LastName>
+    <SurName>Петрович(-вна)</SurName>
+    <City>Гомель</City>
+    <Country>Беларусь</Country>
+  </Record>
+  <Record id="8">
+    <Date>07.07.2017 14:02:34</Date>
+    <FirstName>Илья</FirstName>
+    <LastName>Астапенко</LastName>
+    <SurName>Денисович(-вна)</SurName>
+    <City>Питерберг</City>
+    <Country>Россия</Country>
+  </Record>
+  <Record id="9">
+    <Date>07.07.2017 14:02:34</Date>
+    <FirstName>Анна</FirstName>
+    <LastName>Невдашенко</LastName>
+    <SurName>Евгеньевич(-вна)</SurName>
+    <City>Гомель</City>
+    <Country>Беларусь</Country>
+  </Record>
+  <Record id="10">
+    <Date>07.07.2017 14:02:34</Date>
+    <FirstName>Илья</FirstName>
+    <LastName>Астапенко</LastName>
+    <SurName>Петрович(-вна)</SurName>
+    <City>Речица</City>
+    <Country>Беларусь</Country>
+  </Record>
+</TestProgram>

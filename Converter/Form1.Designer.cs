@@ -39,10 +39,12 @@
             this.ExcelPage = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.XMLPage = new System.Windows.Forms.TabPage();
+            this.XMLSaveButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.OpenPage = new System.Windows.Forms.TabPage();
+            this.AddNewRadio = new System.Windows.Forms.RadioButton();
+            this.AddToExictingRadio = new System.Windows.Forms.RadioButton();
             this.LoadButton = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.FileNameBox = new System.Windows.Forms.TextBox();
             this.ViewButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,10 +52,11 @@
             this.DBPage = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.OpeningBar = new System.Windows.Forms.ProgressBar();
             this.WaitLabel = new System.Windows.Forms.Label();
             this.ShowRecordsButton = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.Tabs.SuspendLayout();
             this.HelloPage.SuspendLayout();
             this.ExcelPage.SuspendLayout();
@@ -100,7 +103,7 @@
             this.OpenButton.FlatAppearance.BorderSize = 3;
             this.OpenButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(252)))), ((int)(((byte)(159)))));
             this.OpenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OpenButton.Location = new System.Drawing.Point(12, 9);
+            this.OpenButton.Location = new System.Drawing.Point(9, 9);
             this.OpenButton.Name = "OpenButton";
             this.OpenButton.Size = new System.Drawing.Size(150, 29);
             this.OpenButton.TabIndex = 3;
@@ -192,6 +195,7 @@
             // 
             // XMLPage
             // 
+            this.XMLPage.Controls.Add(this.XMLSaveButton);
             this.XMLPage.Controls.Add(this.label6);
             this.XMLPage.Location = new System.Drawing.Point(4, 14);
             this.XMLPage.Name = "XMLPage";
@@ -199,6 +203,16 @@
             this.XMLPage.TabIndex = 2;
             this.XMLPage.Text = "tabPage1";
             this.XMLPage.UseVisualStyleBackColor = true;
+            // 
+            // XMLSaveButton
+            // 
+            this.XMLSaveButton.Location = new System.Drawing.Point(7, 176);
+            this.XMLSaveButton.Name = "XMLSaveButton";
+            this.XMLSaveButton.Size = new System.Drawing.Size(104, 23);
+            this.XMLSaveButton.TabIndex = 1;
+            this.XMLSaveButton.Text = "Сохранить";
+            this.XMLSaveButton.UseVisualStyleBackColor = true;
+            this.XMLSaveButton.Click += new System.EventHandler(this.XMLSaveButton_Click);
             // 
             // label6
             // 
@@ -212,8 +226,9 @@
             // 
             // OpenPage
             // 
+            this.OpenPage.Controls.Add(this.AddNewRadio);
+            this.OpenPage.Controls.Add(this.AddToExictingRadio);
             this.OpenPage.Controls.Add(this.LoadButton);
-            this.OpenPage.Controls.Add(this.checkBox1);
             this.OpenPage.Controls.Add(this.FileNameBox);
             this.OpenPage.Controls.Add(this.ViewButton);
             this.OpenPage.Controls.Add(this.label4);
@@ -225,27 +240,37 @@
             this.OpenPage.Text = "tabPage1";
             this.OpenPage.UseVisualStyleBackColor = true;
             // 
+            // AddNewRadio
+            // 
+            this.AddNewRadio.AutoSize = true;
+            this.AddNewRadio.Location = new System.Drawing.Point(7, 83);
+            this.AddNewRadio.Name = "AddNewRadio";
+            this.AddNewRadio.Size = new System.Drawing.Size(169, 20);
+            this.AddNewRadio.TabIndex = 8;
+            this.AddNewRadio.Text = "Записать новые данные";
+            this.AddNewRadio.UseVisualStyleBackColor = true;
+            // 
+            // AddToExictingRadio
+            // 
+            this.AddToExictingRadio.AutoSize = true;
+            this.AddToExictingRadio.Checked = true;
+            this.AddToExictingRadio.Location = new System.Drawing.Point(7, 57);
+            this.AddToExictingRadio.Name = "AddToExictingRadio";
+            this.AddToExictingRadio.Size = new System.Drawing.Size(237, 20);
+            this.AddToExictingRadio.TabIndex = 7;
+            this.AddToExictingRadio.TabStop = true;
+            this.AddToExictingRadio.Text = "Добавить к существующим данным";
+            this.AddToExictingRadio.UseVisualStyleBackColor = true;
+            // 
             // LoadButton
             // 
-            this.LoadButton.Location = new System.Drawing.Point(187, 101);
+            this.LoadButton.Location = new System.Drawing.Point(273, 101);
             this.LoadButton.Name = "LoadButton";
             this.LoadButton.Size = new System.Drawing.Size(75, 23);
             this.LoadButton.TabIndex = 6;
             this.LoadButton.Text = "Загрузить";
             this.LoadButton.UseVisualStyleBackColor = true;
             this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(7, 57);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(238, 20);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Добавить к существующим данным";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // FileNameBox
             // 
@@ -309,20 +334,20 @@
             // 
             this.openFileDialog1.Filter = "CSV files (*.csv)|*.csv";
             // 
-            // button3
+            // ExitButton
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(252)))), ((int)(((byte)(176)))));
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(253)))), ((int)(((byte)(206)))));
-            this.button3.FlatAppearance.BorderSize = 3;
-            this.button3.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(252)))), ((int)(((byte)(159)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(12, 149);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 29);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Выход";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(252)))), ((int)(((byte)(176)))));
+            this.ExitButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(253)))), ((int)(((byte)(206)))));
+            this.ExitButton.FlatAppearance.BorderSize = 3;
+            this.ExitButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(252)))), ((int)(((byte)(159)))));
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Location = new System.Drawing.Point(12, 149);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(150, 29);
+            this.ExitButton.TabIndex = 11;
+            this.ExitButton.Text = "Выход";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // OpeningBar
             // 
@@ -357,6 +382,10 @@
             this.ShowRecordsButton.UseVisualStyleBackColor = false;
             this.ShowRecordsButton.Click += new System.EventHandler(this.ShowRecordsButton_Click);
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "XML files (*.xml)|*.xml";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -365,7 +394,7 @@
             this.Controls.Add(this.ShowRecordsButton);
             this.Controls.Add(this.WaitLabel);
             this.Controls.Add(this.OpeningBar);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.Tabs);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.XMLButton);
@@ -412,13 +441,16 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button LoadButton;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ExitButton;
         public System.Windows.Forms.ProgressBar OpeningBar;
         public System.Windows.Forms.Label WaitLabel;
         private System.Windows.Forms.TabPage DBPage;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button ShowRecordsButton;
+        private System.Windows.Forms.RadioButton AddNewRadio;
+        private System.Windows.Forms.RadioButton AddToExictingRadio;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button XMLSaveButton;
     }
 }
 
