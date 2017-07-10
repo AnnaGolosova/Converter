@@ -29,15 +29,12 @@
         private void InitializeComponent()
         {
             this.XMLButton = new System.Windows.Forms.Button();
-            this.ExcelButton = new System.Windows.Forms.Button();
             this.OpenButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.HelloPage = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ExcelPage = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
             this.XMLPage = new System.Windows.Forms.TabPage();
             this.XMLSaveButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,9 +54,27 @@
             this.WaitLabel = new System.Windows.Forms.Label();
             this.ShowRecordsButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label7 = new System.Windows.Forms.Label();
+            this.ToDate = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.FirstNamesCB = new System.Windows.Forms.ComboBox();
+            this.LastNamesCB = new System.Windows.Forms.ComboBox();
+            this.SurNamesCB = new System.Windows.Forms.ComboBox();
+            this.CitiesCB = new System.Windows.Forms.ComboBox();
+            this.CountriesCB = new System.Windows.Forms.ComboBox();
+            this.SelectedFields = new System.Windows.Forms.ListBox();
+            this.ExcelSaveButton = new System.Windows.Forms.Button();
+            this.FromDate = new System.Windows.Forms.DateTimePicker();
+            this.UseDateTime = new System.Windows.Forms.CheckBox();
             this.Tabs.SuspendLayout();
             this.HelloPage.SuspendLayout();
-            this.ExcelPage.SuspendLayout();
             this.XMLPage.SuspendLayout();
             this.OpenPage.SuspendLayout();
             this.DBPage.SuspendLayout();
@@ -77,24 +92,9 @@
             this.XMLButton.Name = "XMLButton";
             this.XMLButton.Size = new System.Drawing.Size(150, 29);
             this.XMLButton.TabIndex = 5;
-            this.XMLButton.Text = "Экспорт в XML";
+            this.XMLButton.Text = "Экспорт данных";
             this.XMLButton.UseVisualStyleBackColor = false;
             this.XMLButton.Click += new System.EventHandler(this.XMLButton_Click);
-            // 
-            // ExcelButton
-            // 
-            this.ExcelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(252)))), ((int)(((byte)(176)))));
-            this.ExcelButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(253)))), ((int)(((byte)(206)))));
-            this.ExcelButton.FlatAppearance.BorderSize = 3;
-            this.ExcelButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(252)))), ((int)(((byte)(159)))));
-            this.ExcelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExcelButton.Location = new System.Drawing.Point(12, 79);
-            this.ExcelButton.Name = "ExcelButton";
-            this.ExcelButton.Size = new System.Drawing.Size(150, 29);
-            this.ExcelButton.TabIndex = 4;
-            this.ExcelButton.Text = "Экспорт в Excel";
-            this.ExcelButton.UseVisualStyleBackColor = false;
-            this.ExcelButton.Click += new System.EventHandler(this.ExcelButton_Click);
             // 
             // OpenButton
             // 
@@ -103,7 +103,7 @@
             this.OpenButton.FlatAppearance.BorderSize = 3;
             this.OpenButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(252)))), ((int)(((byte)(159)))));
             this.OpenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OpenButton.Location = new System.Drawing.Point(9, 9);
+            this.OpenButton.Location = new System.Drawing.Point(12, 44);
             this.OpenButton.Name = "OpenButton";
             this.OpenButton.Size = new System.Drawing.Size(150, 29);
             this.OpenButton.TabIndex = 3;
@@ -123,7 +123,6 @@
             // 
             this.Tabs.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.Tabs.Controls.Add(this.HelloPage);
-            this.Tabs.Controls.Add(this.ExcelPage);
             this.Tabs.Controls.Add(this.XMLPage);
             this.Tabs.Controls.Add(this.OpenPage);
             this.Tabs.Controls.Add(this.DBPage);
@@ -172,29 +171,27 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Добро пожаловать! ";
             // 
-            // ExcelPage
-            // 
-            this.ExcelPage.Controls.Add(this.label3);
-            this.ExcelPage.Location = new System.Drawing.Point(4, 14);
-            this.ExcelPage.Name = "ExcelPage";
-            this.ExcelPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ExcelPage.Size = new System.Drawing.Size(672, 202);
-            this.ExcelPage.TabIndex = 1;
-            this.ExcelPage.Text = "tabPage2";
-            this.ExcelPage.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(426, 23);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Сохранение информации в формате Excel";
-            // 
             // XMLPage
             // 
+            this.XMLPage.Controls.Add(this.UseDateTime);
+            this.XMLPage.Controls.Add(this.FromDate);
+            this.XMLPage.Controls.Add(this.ExcelSaveButton);
+            this.XMLPage.Controls.Add(this.SelectedFields);
+            this.XMLPage.Controls.Add(this.CountriesCB);
+            this.XMLPage.Controls.Add(this.CitiesCB);
+            this.XMLPage.Controls.Add(this.SurNamesCB);
+            this.XMLPage.Controls.Add(this.LastNamesCB);
+            this.XMLPage.Controls.Add(this.FirstNamesCB);
+            this.XMLPage.Controls.Add(this.label15);
+            this.XMLPage.Controls.Add(this.label14);
+            this.XMLPage.Controls.Add(this.label13);
+            this.XMLPage.Controls.Add(this.label12);
+            this.XMLPage.Controls.Add(this.label11);
+            this.XMLPage.Controls.Add(this.label10);
+            this.XMLPage.Controls.Add(this.label9);
+            this.XMLPage.Controls.Add(this.label8);
+            this.XMLPage.Controls.Add(this.ToDate);
+            this.XMLPage.Controls.Add(this.label7);
             this.XMLPage.Controls.Add(this.XMLSaveButton);
             this.XMLPage.Controls.Add(this.label6);
             this.XMLPage.Location = new System.Drawing.Point(4, 14);
@@ -206,11 +203,11 @@
             // 
             // XMLSaveButton
             // 
-            this.XMLSaveButton.Location = new System.Drawing.Point(7, 176);
+            this.XMLSaveButton.Location = new System.Drawing.Point(7, 150);
             this.XMLSaveButton.Name = "XMLSaveButton";
-            this.XMLSaveButton.Size = new System.Drawing.Size(104, 23);
+            this.XMLSaveButton.Size = new System.Drawing.Size(171, 23);
             this.XMLSaveButton.TabIndex = 1;
-            this.XMLSaveButton.Text = "Сохранить";
+            this.XMLSaveButton.Text = "Сохранить в XML";
             this.XMLSaveButton.UseVisualStyleBackColor = true;
             this.XMLSaveButton.Click += new System.EventHandler(this.XMLSaveButton_Click);
             // 
@@ -220,9 +217,9 @@
             this.label6.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(417, 23);
+            this.label6.Size = new System.Drawing.Size(259, 23);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Сохранение информации в формате XML";
+            this.label6.Text = "Сохранение информации";
             // 
             // OpenPage
             // 
@@ -360,7 +357,7 @@
             // WaitLabel
             // 
             this.WaitLabel.AutoSize = true;
-            this.WaitLabel.Location = new System.Drawing.Point(12, 238);
+            this.WaitLabel.Location = new System.Drawing.Point(12, 235);
             this.WaitLabel.Name = "WaitLabel";
             this.WaitLabel.Size = new System.Drawing.Size(153, 16);
             this.WaitLabel.TabIndex = 13;
@@ -374,7 +371,7 @@
             this.ShowRecordsButton.FlatAppearance.BorderSize = 3;
             this.ShowRecordsButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(252)))), ((int)(((byte)(159)))));
             this.ShowRecordsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ShowRecordsButton.Location = new System.Drawing.Point(12, 44);
+            this.ShowRecordsButton.Location = new System.Drawing.Point(15, 79);
             this.ShowRecordsButton.Name = "ShowRecordsButton";
             this.ShowRecordsButton.Size = new System.Drawing.Size(150, 29);
             this.ShowRecordsButton.TabIndex = 14;
@@ -386,11 +383,185 @@
             // 
             this.saveFileDialog1.Filter = "XML files (*.xml)|*.xml";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 25);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(171, 16);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Выберите поля для отчета:";
+            // 
+            // ToDate
+            // 
+            this.ToDate.CustomFormat = "d.MM.yyyy HH:m";
+            this.ToDate.Location = new System.Drawing.Point(441, 45);
+            this.ToDate.Name = "ToDate";
+            this.ToDate.Size = new System.Drawing.Size(157, 23);
+            this.ToDate.TabIndex = 7;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(199, 49);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(16, 16);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "С";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(412, 49);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(23, 16);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "По";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(199, 28);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(293, 16);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Выберите дополнительные настройки экспорта:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(210, 112);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(31, 16);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Имя";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(210, 142);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(61, 16);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Фамилия";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(210, 172);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(63, 16);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Отчество";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(487, 142);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(43, 16);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Город";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(487, 112);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(50, 16);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "Страна";
+            // 
+            // FirstNamesCB
+            // 
+            this.FirstNamesCB.FormattingEnabled = true;
+            this.FirstNamesCB.Location = new System.Drawing.Point(292, 104);
+            this.FirstNamesCB.Name = "FirstNamesCB";
+            this.FirstNamesCB.Size = new System.Drawing.Size(121, 24);
+            this.FirstNamesCB.TabIndex = 18;
+            // 
+            // LastNamesCB
+            // 
+            this.LastNamesCB.FormattingEnabled = true;
+            this.LastNamesCB.Location = new System.Drawing.Point(292, 134);
+            this.LastNamesCB.Name = "LastNamesCB";
+            this.LastNamesCB.Size = new System.Drawing.Size(121, 24);
+            this.LastNamesCB.TabIndex = 19;
+            // 
+            // SurNamesCB
+            // 
+            this.SurNamesCB.FormattingEnabled = true;
+            this.SurNamesCB.Location = new System.Drawing.Point(292, 164);
+            this.SurNamesCB.Name = "SurNamesCB";
+            this.SurNamesCB.Size = new System.Drawing.Size(121, 24);
+            this.SurNamesCB.TabIndex = 20;
+            // 
+            // CitiesCB
+            // 
+            this.CitiesCB.FormattingEnabled = true;
+            this.CitiesCB.Location = new System.Drawing.Point(543, 134);
+            this.CitiesCB.Name = "CitiesCB";
+            this.CitiesCB.Size = new System.Drawing.Size(121, 24);
+            this.CitiesCB.TabIndex = 21;
+            // 
+            // CountriesCB
+            // 
+            this.CountriesCB.FormattingEnabled = true;
+            this.CountriesCB.Location = new System.Drawing.Point(543, 104);
+            this.CountriesCB.Name = "CountriesCB";
+            this.CountriesCB.Size = new System.Drawing.Size(121, 24);
+            this.CountriesCB.TabIndex = 22;
+            // 
+            // SelectedFields
+            // 
+            this.SelectedFields.FormattingEnabled = true;
+            this.SelectedFields.ItemHeight = 16;
+            this.SelectedFields.Items.AddRange(new object[] {
+            "Дата",
+            "Имя ",
+            "Фамилия",
+            "Отчество",
+            "Город",
+            "Страна"});
+            this.SelectedFields.Location = new System.Drawing.Point(7, 46);
+            this.SelectedFields.Name = "SelectedFields";
+            this.SelectedFields.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.SelectedFields.Size = new System.Drawing.Size(120, 100);
+            this.SelectedFields.TabIndex = 23;
+            // 
+            // ExcelSaveButton
+            // 
+            this.ExcelSaveButton.Location = new System.Drawing.Point(7, 177);
+            this.ExcelSaveButton.Name = "ExcelSaveButton";
+            this.ExcelSaveButton.Size = new System.Drawing.Size(171, 23);
+            this.ExcelSaveButton.TabIndex = 24;
+            this.ExcelSaveButton.Text = "Сохранить в Excel";
+            this.ExcelSaveButton.UseVisualStyleBackColor = true;
+            this.ExcelSaveButton.Click += new System.EventHandler(this.ExcelSaveButton_Click);
+            // 
+            // FromDate
+            // 
+            this.FromDate.CustomFormat = "dd.MM.yyyy HH:m";
+            this.FromDate.Location = new System.Drawing.Point(221, 45);
+            this.FromDate.Name = "FromDate";
+            this.FromDate.Size = new System.Drawing.Size(156, 23);
+            this.FromDate.TabIndex = 25;
+            // 
+            // UseDateTime
+            // 
+            this.UseDateTime.AutoSize = true;
+            this.UseDateTime.Location = new System.Drawing.Point(202, 74);
+            this.UseDateTime.Name = "UseDateTime";
+            this.UseDateTime.Size = new System.Drawing.Size(138, 20);
+            this.UseDateTime.TabIndex = 26;
+            this.UseDateTime.Text = "Не учитывать дату";
+            this.UseDateTime.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 282);
+            this.ClientSize = new System.Drawing.Size(860, 259);
             this.Controls.Add(this.ShowRecordsButton);
             this.Controls.Add(this.WaitLabel);
             this.Controls.Add(this.OpeningBar);
@@ -398,7 +569,6 @@
             this.Controls.Add(this.Tabs);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.XMLButton);
-            this.Controls.Add(this.ExcelButton);
             this.Controls.Add(this.OpenButton);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "Form1";
@@ -407,8 +577,6 @@
             this.Tabs.ResumeLayout(false);
             this.HelloPage.ResumeLayout(false);
             this.HelloPage.PerformLayout();
-            this.ExcelPage.ResumeLayout(false);
-            this.ExcelPage.PerformLayout();
             this.XMLPage.ResumeLayout(false);
             this.XMLPage.PerformLayout();
             this.OpenPage.ResumeLayout(false);
@@ -423,16 +591,13 @@
         #endregion
 
         private System.Windows.Forms.Button XMLButton;
-        private System.Windows.Forms.Button ExcelButton;
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabControl Tabs;
         private System.Windows.Forms.TabPage HelloPage;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage ExcelPage;
         private System.Windows.Forms.TabPage XMLPage;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabPage OpenPage;
         private System.Windows.Forms.Label label5;
@@ -451,6 +616,25 @@
         private System.Windows.Forms.RadioButton AddToExictingRadio;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button XMLSaveButton;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker ToDate;
+        private System.Windows.Forms.ComboBox CountriesCB;
+        private System.Windows.Forms.ComboBox CitiesCB;
+        private System.Windows.Forms.ComboBox SurNamesCB;
+        private System.Windows.Forms.ComboBox LastNamesCB;
+        private System.Windows.Forms.ComboBox FirstNamesCB;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox SelectedFields;
+        private System.Windows.Forms.Button ExcelSaveButton;
+        private System.Windows.Forms.DateTimePicker FromDate;
+        private System.Windows.Forms.CheckBox UseDateTime;
     }
 }
 
