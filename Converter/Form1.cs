@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-using Excel = Microsoft.Office.Interop.Excel;
 
 
 namespace Converter
@@ -26,6 +25,7 @@ namespace Converter
         {
             WaitLabel.Visible = false;
             OpeningBar.Maximum = maxValue;
+            OpeningBar.Value = 0;
             OpeningBar.Visible = true;
         }
         public void IncOpeningBarValue()
@@ -112,9 +112,11 @@ namespace Converter
                                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     workThread.Abort();
+                    Application.Exit();
                 }
             }
-            Application.Exit();
+            else
+                Application.Exit();
         }
 
         public void StopThread()
@@ -218,6 +220,9 @@ namespace Converter
                     selectedFields[i] = SelectedFields.GetSelected(i);
                 writer.selectedItems = selectedFields;
                 writer.result = GetResult();
+                if (writer.result.Count == 0)
+                    MessageBox.Show("Внимание! Нет записей, соответствующих выбранным Вами настройкам. Возможная проблема: не выбрано ни одно поле для экспорта.",
+                        "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Thread xmlThread = new Thread(writer.WriteXML);
                 xmlThread.Start();
                 WaitLabel.Text = "XML файл успешно сохранен!";
@@ -229,20 +234,22 @@ namespace Converter
             saveFileDialog1.Filter = "Excel files (*.xls)|*.xls";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                try
+                if (workThread.IsAlive)
+                    MessageBox.Show("Внимание! Дождитесь завершения предидущего процесса!", "Предыдущий процесс завершен не полностью!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
                 {
-                    Excel.Application newApp = new Excel.Application();
-                    List<User> result = GetResult();
-                    newApp.Workbooks.Add();
-                    Excel.Range r = newApp.Range[];
-                    //Excel.Worksheet currSheet = (Excel.Worksheet)newApp.ActiveSheet();
-                    //currSheet.Cells[1, 1] = "dfdfd00";
-                    //currSheet.SaveAs(saveFileDialog1.FileName);
-                    newApp.Quit();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message+" "+ex.InnerException);
+                    ExcelWriter writer = new ExcelWriter(saveFileDialog1.FileName);
+                    bool[] selectedFields = new bool[6];
+                    for (int it = 0; it < 6; it++)
+                        selectedFields[it] = SelectedFields.GetSelected(it);
+                    writer.selectedFields = selectedFields;
+                    writer.currentForm = this;
+                    writer.result = GetResult();
+                    if (writer.result.Count == 0)
+                        MessageBox.Show("Внимание! Нет записей, соответствующих выбранным Вами настройкам. Возможная проблема: не выбрано ни одно поле для экспорта.",
+                            "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    workThread = new Thread(writer.WriteExcel);
+                    workThread.Start();
                 }
             }
         }

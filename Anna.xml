@@ -1,27 +1,9 @@
 <TestProgram>
-  <Record id="2">
-    <Date>07.07.2017 14:02:33</Date>
-    <FirstName>Анна</FirstName>
-    <LastName>Астапенко</LastName>
-    <SurName>Андреевич(-вна)</SurName>
-  </Record>
   <Record id="9">
     <Date>07.07.2017 14:02:34</Date>
     <FirstName>Анна</FirstName>
     <LastName>Невдашенко</LastName>
     <SurName>Евгеньевич(-вна)</SurName>
-  </Record>
-  <Record id="14">
-    <Date>06.07.2017 14:51:29</Date>
-    <FirstName>Анна</FirstName>
-    <LastName>Прокопенко</LastName>
-    <SurName>Евгеньевич(-вна)</SurName>
-  </Record>
-  <Record id="17">
-    <Date>06.07.2017 14:51:29</Date>
-    <FirstName>Анна</FirstName>
-    <LastName>Прохоренко</LastName>
-    <SurName>Максимович(-вна)</SurName>
   </Record>
   <Record id="31">
     <Date>07.07.2017 14:02:38</Date>
@@ -29,47 +11,11 @@
     <LastName>Невдашенко</LastName>
     <SurName>Денисович(-вна)</SurName>
   </Record>
-  <Record id="35">
-    <Date>07.07.2017 14:02:38</Date>
-    <FirstName>Анна</FirstName>
-    <LastName>Прокопенко</LastName>
-    <SurName>Андреевич(-вна)</SurName>
-  </Record>
-  <Record id="36">
-    <Date>07.07.2017 14:02:38</Date>
-    <FirstName>Анна</FirstName>
-    <LastName>Прохоренко</LastName>
-    <SurName>Петрович(-вна)</SurName>
-  </Record>
-  <Record id="44">
-    <Date>07.07.2017 14:02:38</Date>
-    <FirstName>Анна</FirstName>
-    <LastName>Прохоренко</LastName>
-    <SurName>Петрович(-вна)</SurName>
-  </Record>
   <Record id="47">
     <Date>07.07.2017 14:02:38</Date>
     <FirstName>Анна</FirstName>
     <LastName>Невдашенко</LastName>
     <SurName>Денисович(-вна)</SurName>
-  </Record>
-  <Record id="49">
-    <Date>07.07.2017 14:02:39</Date>
-    <FirstName>Анна</FirstName>
-    <LastName>Сидоренко</LastName>
-    <SurName>Максимович(-вна)</SurName>
-  </Record>
-  <Record id="53">
-    <Date>07.07.2017 14:02:39</Date>
-    <FirstName>Анна</FirstName>
-    <LastName>Сидоренко</LastName>
-    <SurName>Евгеньевич(-вна)</SurName>
-  </Record>
-  <Record id="62">
-    <Date>07.07.2017 14:02:39</Date>
-    <FirstName>Анна</FirstName>
-    <LastName>Астапенко</LastName>
-    <SurName>Андреевич(-вна)</SurName>
   </Record>
   <Record id="63">
     <Date>07.07.2017 14:02:39</Date>

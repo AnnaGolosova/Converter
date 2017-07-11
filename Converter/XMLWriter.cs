@@ -12,12 +12,11 @@ using System.Windows.Forms;
 
 namespace Converter
 {
-    class XMLWriter
+    public class XMLWriter
     {
         public string fileName;
         public bool[] selectedItems;
         public List<User> result;
-        public bool useDateTime;
 
         public XMLWriter(string file)
         {
@@ -32,8 +31,6 @@ namespace Converter
             writer.Close();
             XmlDocument document = new XmlDocument();
             document.Load(fileName);
-
-            
 
             foreach (User user in result.ToList())
             {
@@ -83,10 +80,10 @@ namespace Converter
         }
     }
 
-    public static class New1
+    public static class HelpClass
     {
         public static DataTable ToDataTable<T>(this IList<T> data)
-        { 
+        {
             PropertyDescriptorCollection properties =
                 TypeDescriptor.GetProperties(typeof(T));
             DataTable table = new DataTable("Users");
